@@ -1,0 +1,77 @@
+# Wine Quality Prediction README
+
+## Overview
+
+This project aims to predict the quality of wine based on various chemical properties using a Decision Tree Classifier. The dataset used for this analysis is from the Wine Quality dataset, which contains various attributes related to wine samples.
+
+## Contents
+
+- **Data Analysis**: Exploration and preprocessing of the wine quality dataset.
+- **Model Training**: Implementing a Decision Tree Classifier to predict wine quality.
+- **Performance Evaluation**: Evaluating the model's accuracy and performance.
+
+## Dataset
+
+The dataset used is `WineQT.csv`, which contains the following columns:
+
+- **fixed acidity**: Fixed acidity in g/dm³
+- **volatile acidity**: Volatile acidity in g/dm³
+- **citric acid**: Citric acid in g/dm³
+- **residual sugar**: Residual sugar in g/dm³
+- **chlorides**: Chlorides in g/dm³
+- **free sulfur dioxide**: Free sulfur dioxide in mg/dm³
+- **total sulfur dioxide**: Total sulfur dioxide in mg/dm³
+- **density**: Density in g/cm³
+- **pH**: pH level
+- **sulphates**: Sulphates in g/dm³
+- **alcohol**: Alcohol content in % volume
+- **quality**: Quality score (0-10)
+- **Id**: Unique identifier for each sample
+
+## Installation
+
+Ensure you have the following libraries installed:
+
+```bash
+pip install pandas numpy scikit-learn matplotlib
+```
+
+## Usage
+
+1. **Load the Dataset**:
+   Load the dataset into a pandas DataFrame.
+
+   ```python
+   import pandas as pd
+   df = pd.read_csv('/path/to/WineQT.csv')
+   ```
+
+2. **Data Preprocessing**:
+   - Standardize numerical features.
+   - Create a binary quality label based on the original quality score.
+
+3. **Model Training**:
+   - Split the data into training and test sets.
+   - Train a Decision Tree Classifier.
+
+   ```python
+   from sklearn.model_selection import train_test_split
+   from sklearn.tree import DecisionTreeClassifier
+
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+   model = DecisionTreeClassifier()
+   model.fit(X_train, y_train)
+   ```
+
+4. **Model Evaluation**:
+   - Evaluate the model's accuracy.
+
+   ```python
+   from sklearn.metrics import accuracy_score
+   accuracy = accuracy_score(y_test, y_pred)
+   print(f'Accuracy: {accuracy:.2f}')
+   ```
+
+## Results
+
+The model achieved an accuracy of **1.00** on the test set, indicating perfect classification for the given dataset.
